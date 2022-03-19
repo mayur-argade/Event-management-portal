@@ -46,3 +46,11 @@
     padding-right: 20px;
     justify-content: space-between;
 }
+
+.fileuploadgriditem{
+ padding-top: 5rem;
+}
+
+.fileuploader{
+    height: 10rem;
+}

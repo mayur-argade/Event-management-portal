@@ -1,9 +1,10 @@
-import {Button, Checkbox, Dialog, DialogTitle, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, TextField } from '@mui/material'
+import {Button, Checkbox, Dialog, DialogTitle, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, TextField, Typography} from '@mui/material'
 import React, { useState } from 'react'
 import "./AddEvent.css"
 import PropTypes from 'prop-types';
 import { FileUploader } from 'react-drag-drop-files';
 import { grey } from '@mui/material/colors';
+
 
 
 const AddEvent = () => {
@@ -40,14 +41,15 @@ const AddEvent = () => {
   };
   return(
     <div className='AddEvent'>
-      <h1>Add New Event</h1>
+      <Typography variant="h4" sx={{ textAlign: 'center' }}>Add New Event</Typography>
+      <Typography sx={{ textAlign: 'center' }}>Let's get started with few questions....</Typography>
       <Grid container>
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <Grid item className='GridItems'>
-            <TextField fullWidth label="Event Title" placeholder="Introduction to AI/ML" InputLabelProps={{shrink: true,}} variant='filled'></TextField>
+            <TextField fullWidth label="Event Title" placeholder="Introduction to AI/ML" InputLabelProps={{shrink: true,}}  variant="standard" ></TextField>
           </Grid>
           <Grid item className='GridItems'>
-          <TextField fullWidth label="Description" placeholder="About the Event-" InputLabelProps={{shrink: true,}} variant='filled' multiline rows={3}></TextField>
+          <TextField fullWidth label="Description" placeholder="About the Event-" InputLabelProps={{shrink: true,}} multiline rows={3}></TextField>
           </Grid>
           <Grid container direction='row' className='TimePickers'>
             <Grid item className='GridItems'>
@@ -55,7 +57,7 @@ const AddEvent = () => {
                 id="datetime-local"
                 label="Starting Time"
                 type="datetime-local"
-                variant='filled'
+                variant='standard'
                 defaultValue="2021-03-19T10:30"
                 sx={{ width: 250 }}
                 InputLabelProps={{
@@ -68,7 +70,7 @@ const AddEvent = () => {
                 id="datetime-local"
                 label="Ending Time"
                 type="datetime-local"
-                variant='filled'
+                variant='standard'
                 defaultValue="2021-03-19T10:30"
                 sx={{ width: 250 }}
                 InputLabelProps={{
@@ -78,9 +80,10 @@ const AddEvent = () => {
             </Grid>
           </Grid>
           </Grid>
-          <Grid item lg={6} md={6} sm={12} xs={12}>
-            <h1>Add Event Poster</h1>
-            <FileUploader
+          <Grid item className="fileuploadgriditem" lg={6} md={6} sm={12} xs={12}>
+            <Typography >Add Event Poster</Typography>
+            <FileUploader 
+              className="fileuploader"
               multiple={false}
               handleChange={handleChange}
               name="file"
@@ -121,22 +124,24 @@ const AddEvent = () => {
   };
   return(
     <div className='AddEvent'>
-      <h1>Add Information about the Event</h1>
+      <Typography variant="h4" sx={{ textAlign: 'center' }}>Information About Event</Typography>
+      <Typography sx={{ textAlign: 'center' }}>give details about event....</Typography>
       <Grid container>
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <Grid item className='GridItems'>
-          <TextField fullWidth label="Speaker" placeholder="Mr. Narendra Modi" InputLabelProps={{shrink: true,}} variant='filled'></TextField>
+          <TextField fullWidth label="Speaker" placeholder="Mr. Narendra Modi" InputLabelProps={{shrink: true,}} variant="standard"></TextField>
           </Grid>
           <Grid item className='GridItems'>
-          <TextField fullWidth label="Purpose of the Event" placeholder="To introduce students to the concepts of AI/ML" InputLabelProps={{shrink: true,}} variant='filled' multiline rows={3}></TextField>
+          <TextField fullWidth label="Purpose of the Event" placeholder="To introduce students to the concepts of AI/ML" InputLabelProps={{shrink: true,}}  multiline rows={3}></TextField>
           </Grid>
           <Grid item className='GridItems'>
-          <TextField fullWidth label="Topics to be covered" placeholder="Introduction to AI and ML and their modern use cases-" InputLabelProps={{shrink: true,}} variant='filled' multiline rows={3}></TextField>
+          <TextField fullWidth label="Topics to be covered" placeholder="Introduction to AI and ML and their modern use cases-" InputLabelProps={{shrink: true,}}  multiline rows={3}></TextField>
           </Grid>
           </Grid>
-          <Grid item lg={6} md={6} sm={12} xs={12}>
-          <h1>Add Attachments</h1>
+          <Grid item lg={6} md={6} sm={12} xs={12} className="fileuploadgriditem">
+          <Typography >Add attachments</Typography>
             <FileUploader
+              className="fileuploader2"
               multiple={true}
               handleChange={handleChange}
               name="file"
@@ -208,18 +213,19 @@ SimpleDialog.propTypes = {
 
   return(
     <div className='AddEvent'>
-      <h1>Add Final about the Event</h1>
+      <Typography variant="h4" sx={{ textAlign: 'center' }}>Last step to publish event</Typography>
+      <Typography sx={{ textAlign: 'center' }}>Admin only infomation</Typography>
       <Grid container>
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <Grid item className='GridItems'>
-          <TextField fullWidth label="Organized by" placeholder="Terna Engineering College, Computer Department" InputLabelProps={{shrink: true,}} variant='filled'></TextField>
+          <TextField fullWidth label="Organizers" placeholder="Ganesh murty" InputLabelProps={{shrink: true,}} variant='standard'></TextField>
           </Grid>
           <Grid item className='GridItems'>
-          <TextField fullWidth label="Additional Information" placeholder="Certificates will be provided to the attendees" InputLabelProps={{shrink: true,}} variant='filled' multiline rows={3}></TextField>
+          <TextField fullWidth label="Additional Information" placeholder="Certificates will be provided to the attendees" InputLabelProps={{shrink: true,}} multiline rows={3}></TextField>
           </Grid>
           </Grid>
-          <Grid item lg={6} md={6} sm={12} xs={12}>
-          <h1>Add Admin Documents</h1>
+          <Grid item lg={6} md={6} sm={12} xs={12} >
+          <Typography className="fileuploadgriditem" >Add admin files</Typography>
             <FileUploader
               multiple={true}
               handleChange={handleChange}

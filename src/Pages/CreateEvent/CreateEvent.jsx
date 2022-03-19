@@ -11,8 +11,8 @@ const CreateEvent = () => {
       <Grid item lg={12} md={12} sm={12} xs={12}>
         <ResponsiveDrawer></ResponsiveDrawer>
       </Grid>
-      <Grid item lg={12} md={12} sm={12} xs={12} className='add-event'>
-        <Container maxWidth='xl'>
+      <Grid item paddingLeft={{xs:'0px',sm:'240px', md:'240px', lg:'240px'}} lg={12} md={12} sm={12} xs={12} className='add-event' >
+        <Container >
           <AddEvent></AddEvent>
         </Container>
       </Grid>

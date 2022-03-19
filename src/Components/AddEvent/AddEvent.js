@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import "./AddEvent.css"
 import PropTypes from 'prop-types';
 import { FileUploader } from 'react-drag-drop-files';
+import { grey } from '@mui/material/colors';
 
 
 const AddEvent = () => {
@@ -17,7 +18,7 @@ const AddEvent = () => {
       <h1>No Ongoing Events</h1>
       <p>No Events are currently active.</p>
       <p>Start a new Event now!</p>
-      <Button variant='outlined' onClick={nextPage}>
+      <Button variant='contained' onClick={nextPage}>
       Create Event
     </Button>
     </div>
@@ -43,10 +44,10 @@ const AddEvent = () => {
       <Grid container>
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <Grid item className='GridItems'>
-            <TextField fullWidth label="Event Title" variant='standard'></TextField>
+            <TextField fullWidth label="Event Title" placeholder="Introduction to AI/ML" InputLabelProps={{shrink: true,}} variant='filled'></TextField>
           </Grid>
           <Grid item className='GridItems'>
-            <TextField fullWidth  label="Description" multiline rows={3}></TextField>
+          <TextField fullWidth label="Description" placeholder="About the Event-" InputLabelProps={{shrink: true,}} variant='filled' multiline rows={3}></TextField>
           </Grid>
           <Grid container direction='row' className='TimePickers'>
             <Grid item className='GridItems'>
@@ -54,7 +55,8 @@ const AddEvent = () => {
                 id="datetime-local"
                 label="Starting Time"
                 type="datetime-local"
-                defaultValue="2017-05-24T10:30"
+                variant='filled'
+                defaultValue="2021-03-19T10:30"
                 sx={{ width: 250 }}
                 InputLabelProps={{
                   shrink: true,
@@ -66,7 +68,8 @@ const AddEvent = () => {
                 id="datetime-local"
                 label="Ending Time"
                 type="datetime-local"
-                defaultValue="2017-05-24T10:30"
+                variant='filled'
+                defaultValue="2021-03-19T10:30"
                 sx={{ width: 250 }}
                 InputLabelProps={{
                   shrink: true,
@@ -122,13 +125,13 @@ const AddEvent = () => {
       <Grid container>
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <Grid item className='GridItems'>
-            <TextField fullWidth label="Speaker" variant='standard'></TextField>
+          <TextField fullWidth label="Speaker" placeholder="Mr. Narendra Modi" InputLabelProps={{shrink: true,}} variant='filled'></TextField>
           </Grid>
           <Grid item className='GridItems'>
-            <TextField fullWidth  label="Purpose of the Event" multiline rows={3}></TextField>
+          <TextField fullWidth label="Purpose of the Event" placeholder="To introduce students to the concepts of AI/ML" InputLabelProps={{shrink: true,}} variant='filled' multiline rows={3}></TextField>
           </Grid>
           <Grid item className='GridItems'>
-            <TextField fullWidth  label="Topics to be covered in the Event" multiline rows={3}></TextField>
+          <TextField fullWidth label="Topics to be covered" placeholder="Introduction to AI and ML and their modern use cases-" InputLabelProps={{shrink: true,}} variant='filled' multiline rows={3}></TextField>
           </Grid>
           </Grid>
           <Grid item lg={6} md={6} sm={12} xs={12}>
@@ -209,13 +212,10 @@ SimpleDialog.propTypes = {
       <Grid container>
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <Grid item className='GridItems'>
-            <TextField fullWidth label="Speaker" variant='standard'></TextField>
+          <TextField fullWidth label="Organized by" placeholder="Terna Engineering College, Computer Department" InputLabelProps={{shrink: true,}} variant='filled'></TextField>
           </Grid>
           <Grid item className='GridItems'>
-            <TextField fullWidth  label="Purpose of the Event" multiline rows={3}></TextField>
-          </Grid>
-          <Grid item className='GridItems'>
-            <TextField fullWidth  label="Topics to be covered in the Event" multiline rows={3}></TextField>
+          <TextField fullWidth label="Additional Information" placeholder="Certificates will be provided to the attendees" InputLabelProps={{shrink: true,}} variant='filled' multiline rows={3}></TextField>
           </Grid>
           </Grid>
           <Grid item lg={6} md={6} sm={12} xs={12}>

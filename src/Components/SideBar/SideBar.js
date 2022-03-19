@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {AppBar, Toolbar, InputBase, Avatar, IconButton, Drawer, CssBaseline, Box, Typography, List, ListItem, ListItemText, ListItemButton, ListItemIcon  } from '@mui/material'
+import {AppBar, Toolbar, InputBase, Avatar, IconButton, Drawer, CssBaseline, Box, Typography, List, ListItem, ListItemText, ListItemButton, ListItemIcon, Grid  } from '@mui/material'
 import PropTypes from 'prop-types';
 import MenuIcon from '@mui/icons-material/Menu';
 import './SideBar.css';
@@ -9,7 +9,7 @@ import { Navigate, NavLink } from 'react-router-dom';
 import logo from '../../asset/logo.png'
 import mayur from '../../asset/profile.png'
 
-const drawerWidth = {lg:'240px',sm:minWidth};
+const drawerWidth = '240px';
 
 const useStyles = makeStyles((theme) => ({
   search: {  
@@ -128,31 +128,31 @@ function ResponsiveDrawer(props) {
 
         </Toolbar>
       </AppBar>
-      <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-        >
-          {drawer}
-        </Drawer>
         <Drawer
-          variant="permanent"
-          sx={{
-            display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-          open
-        >
-          {drawer}
-        </Drawer>
+            container={container}
+            variant="temporary"
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+            sx={{
+              display: { xs: 'block', sm: 'none' },
+              '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            }}
+          >
+            {drawer}
+          </Drawer>
+          <Drawer
+            variant="permanent"
+            sx={{
+              display: { xs: 'none', sm: 'block' },
+              '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            }}
+            open
+          >
+            {drawer}
+          </Drawer>
     </Box>
   );
 }

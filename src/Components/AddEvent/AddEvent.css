@@ -1,25 +1,23 @@
 .EventPage{
     border-radius: 25px;
-    background-color: whitesmoke;
+    background-color: white;
     height: fit-content;
     margin-right: 15px;
     margin-left: 15px;
     margin-bottom: 15px;
     text-align: center;
-    padding: 50px;
     align-items: center;
 }
 
 .AddEvent{
     /* min-width: 400px; */
     border-radius: 25px;
-    background-color: whitesmoke;
+    background-color: white;
     height: fit-content;
     margin-right: 15px;
     margin-left: 15px;
     margin-bottom: 15px;
     padding-bottom: 50px;
-    padding-top: 50px;
     padding-right: 20px;
     padding-left: 20px;
     align-items: center;
@@ -32,8 +30,8 @@
 }
 
 .GridItems{
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     padding-right: 40px;
 
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import ResponsiveDrawer from '../../Components/SideBar/SideBar';
-import AddEvent from '../../Components/AddEvent/AddEvent';
+import AddEvent from '../../Components/EventForm/EventForm';
 import { Container, Grid } from '@mui/material';
 import './createevent.css';
 

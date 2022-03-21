@@ -1,11 +1,11 @@
-import './App.css';
+
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
 import Homepage from './Pages/Homepage/Homepage'
-import Event from './Pages/Eventpage/EventPage'
+import Event from './Pages/AddEvent/AddEvent'
 import CreateEvent from './Pages/CreateEvent/CreateEvent'
 
 function App() {

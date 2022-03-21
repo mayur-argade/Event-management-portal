@@ -1,7 +1,0 @@
-frontend
-npm add react-router-dom
-npm install react-scripts
-npm install @mui/material @emotion/react @emotion/styled
-npm install @mui/icons-material
-
-Backend

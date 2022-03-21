@@ -61,7 +61,7 @@ function ResponsiveDrawer(props) {
           </NavLink>
 
           
-          <NavLink to="/newevent" className='Navlink' style={{ textDecoration: 'none' }}>
+          <NavLink to="/event" className='Navlink' style={{ textDecoration: 'none' }}>
           <ListItem  disablePadding>
             <ListItemButton>
               <ListItemIcon  >
@@ -72,7 +72,7 @@ function ResponsiveDrawer(props) {
           </ListItem>
           </NavLink>
 
-          <NavLink to="/event" className='Navlink' style={{ textDecoration: 'none' }}>
+          <NavLink to="/" className='Navlink' style={{ textDecoration: 'none' }}>
           <ListItem  disablePadding>
             <ListItemButton>
               <ListItemIcon  >
@@ -121,7 +121,7 @@ function ResponsiveDrawer(props) {
                 </div>
                 <div className={classes.profile}>
                 <Avatar style={{marginRight: 6}} alt="profile-photo" src={mayur} />
-                <Typography className={classes.username} color="#000000"  >Welcome <br/> Mayur Argade</Typography>
+                <Typography className={classes.username} color="#000000"  >Hi <br/> Mayur Argade</Typography>
                 </div>
             </div>
         

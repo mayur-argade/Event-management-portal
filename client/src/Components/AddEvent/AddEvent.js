@@ -1,10 +1,9 @@
-import {Button, Checkbox, Dialog, DialogTitle, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, TextField, Typography} from '@mui/material'
+import {Button, Checkbox, Dialog, DialogTitle, FormControl, FormControlLabel, FormLabel, Grid, TextField } from '@mui/material'
 import React, { useState } from 'react'
 import "./AddEvent.css"
 import PropTypes from 'prop-types';
 import { FileUploader } from 'react-drag-drop-files';
-import { grey } from '@mui/material/colors';
-
+import DropFileInput from '../drop-file-input/DropFileInput';
 
 
 const AddEvent = () => {
@@ -12,13 +11,13 @@ const AddEvent = () => {
 
  function EventPage() {
    function nextPage() {
-     setPage(page=>1);
+     setPage(()=>1);
    }
   return (
-    <div className='EventPage'>
-      <h1>No Ongoing Events</h1>
-      <p>No Events are currently active.</p>
-      <p>Start a new Event now!</p>
+    <div className='EventPage' >
+      <div className='text-4xl py-3'>No Ongoing Events</div>
+      <div className='text-lg'>No Events are currently active.</div>
+      <p className='mb-3'>Start a new Event now!</p>
       <Button variant='contained' onClick={nextPage}>
       Create Event
     </Button>
@@ -34,6 +33,7 @@ const AddEvent = () => {
     setPage(page=>2);
   }
 
+  
   const fileTypes = ["JPG", "PNG", "GIF","PDF"];
   const [file, setFile] = useState(null);
   const handleChange = (file) => {
@@ -41,15 +41,14 @@ const AddEvent = () => {
   };
   return(
     <div className='AddEvent'>
-      <Typography variant="h4" sx={{ textAlign: 'center' }}>Add New Event</Typography>
-      <Typography sx={{ textAlign: 'center' }}>Let's get started with few questions....</Typography>
+      <h1>Add New Event</h1>
       <Grid container>
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <Grid item className='GridItems'>
-            <TextField fullWidth label="Event Title" placeholder="Introduction to AI/ML" InputLabelProps={{shrink: true,}}  variant="standard" ></TextField>
+            <TextField fullWidth label="Event Title" placeholder="Introduction to AI/ML" InputLabelProps={{shrink: true,}} variant='filled'></TextField>
           </Grid>
           <Grid item className='GridItems'>
-          <TextField fullWidth label="Description" placeholder="About the Event-" InputLabelProps={{shrink: true,}} multiline rows={3}></TextField>
+          <TextField fullWidth label="Description" placeholder="About the Event-" InputLabelProps={{shrink: true,}} variant='filled' multiline rows={3}></TextField>
           </Grid>
           <Grid container direction='row' className='TimePickers'>
             <Grid item className='GridItems'>
@@ -57,7 +56,7 @@ const AddEvent = () => {
                 id="datetime-local"
                 label="Starting Time"
                 type="datetime-local"
-                variant='standard'
+                variant='filled'
                 defaultValue="2021-03-19T10:30"
                 sx={{ width: 250 }}
                 InputLabelProps={{
@@ -70,7 +69,7 @@ const AddEvent = () => {
                 id="datetime-local"
                 label="Ending Time"
                 type="datetime-local"
-                variant='standard'
+                variant='filled'
                 defaultValue="2021-03-19T10:30"
                 sx={{ width: 250 }}
                 InputLabelProps={{
@@ -80,10 +79,9 @@ const AddEvent = () => {
             </Grid>
           </Grid>
           </Grid>
-          <Grid item className="fileuploadgriditem" lg={6} md={6} sm={12} xs={12}>
-            <Typography >Add Event Poster</Typography>
-            <FileUploader 
-              className="fileuploader"
+          <Grid item lg={6} md={6} sm={12} xs={12}>
+            <h1>Add Event Poster</h1>
+            <DropFileInput
               multiple={false}
               handleChange={handleChange}
               name="file"
@@ -91,81 +89,57 @@ const AddEvent = () => {
             />
             <p>{file ? `File name: ${file.name}` : "No files uploaded yet"}</p>
           </Grid>
-          <Grid container lg={6} md={6} sm={12} xs={12} direction='row' className='Buttons'>
-            <Grid item >
-              <Button variant='contained' color='error' onClick={prevPage}>
-              Back
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button variant='contained' onClick={nextPage}>
-                Next
-              </Button>
-            </Grid>
-          </Grid>
-        
-      </Grid>
-    </div>
-   )
- }
-
-
- function AddEventPage2(){
-  function prevPage() {
-    setPage(page=>1);
-  }
-  function nextPage() {
-    setPage(page=>3);
-  }
-  const fileTypes = ["JPG", "PNG", "GIF","PDF"];
-  const [file, setFile] = useState(null);
-  const handleChange = (file) => {
-    setFile(file);
-  };
-  return(
-    <div className='AddEvent'>
-      <Typography variant="h4" sx={{ textAlign: 'center' }}>Information About Event</Typography>
-      <Typography sx={{ textAlign: 'center' }}>give details about event....</Typography>
+      <h1>Add Information about the Event</h1>
       <Grid container>
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <Grid item className='GridItems'>
-          <TextField fullWidth label="Speaker" placeholder="Mr. Narendra Modi" InputLabelProps={{shrink: true,}} variant="standard"></TextField>
+          <TextField fullWidth label="Speaker" placeholder="Mr. Narendra Modi" InputLabelProps={{shrink: true,}} variant='filled'></TextField>
           </Grid>
           <Grid item className='GridItems'>
-          <TextField fullWidth label="Purpose of the Event" placeholder="To introduce students to the concepts of AI/ML" InputLabelProps={{shrink: true,}}  multiline rows={3}></TextField>
+          <TextField fullWidth label="Purpose of the Event" placeholder="To introduce students to the concepts of AI/ML" InputLabelProps={{shrink: true,}} variant='filled' multiline rows={3}></TextField>
           </Grid>
           <Grid item className='GridItems'>
-          <TextField fullWidth label="Topics to be covered" placeholder="Introduction to AI and ML and their modern use cases-" InputLabelProps={{shrink: true,}}  multiline rows={3}></TextField>
+          <TextField fullWidth label="Topics to be covered" placeholder="Introduction to AI and ML and their modern use cases-" InputLabelProps={{shrink: true,}} variant='filled' multiline rows={3}></TextField>
           </Grid>
           </Grid>
-          <Grid item lg={6} md={6} sm={12} xs={12} className="fileuploadgriditem">
-          <Typography >Add attachments</Typography>
-            <FileUploader
-              className="fileuploader2"
-              multiple={true}
-              handleChange={handleChange}
-              name="file"
-              types={fileTypes}
-            />
-            <p>{file ? `File name: ${file.name}` : "No files uploaded yet"}</p>
+        
+      </Grid>
+
+      <h1>Add Final Information about the Event</h1>
+      <Grid container>
+        <Grid item lg={6} md={6} sm={12} xs={12}>
+          <Grid item className='GridItems'>
+          <TextField fullWidth label="Organized by" placeholder="Terna Engineering College, Computer Department" InputLabelProps={{shrink: true,}} variant='filled'></TextField>
           </Grid>
-          <Grid container lg={6} md={6} sm={12} xs={12} direction='row' className='Buttons'>
-            <Grid item >
-              <Button variant='contained' color='error' onClick={prevPage}>
-              Back
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button variant='contained' onClick={nextPage}>
-                Next
+          <Grid item className='GridItems'>
+          <TextField fullWidth label="Additional Information" placeholder="Certificates will be provided to the attendees" InputLabelProps={{shrink: true,}} variant='filled' multiline rows={3}></TextField>
+          </Grid>
+          </Grid>
+
+          
+          <Grid container lg={12} md={12} sm={12} xs={12} direction='row' className='Buttons'>
+          <Grid item className='Grid Items' lg={12} md={12} sm={12} xs={12}>
+            <FormControl>
+            <FormLabel id="demo-radio-buttons-group-label">Who Can Attend</FormLabel>
+
+                <FormControlLabel value="faculty" control={<Checkbox />} label="Terna Faculty" />
+                <FormControlLabel value="students" control={<Checkbox />} label="Terna Students" />
+                <FormControlLabel value="others" control={<Checkbox />} label="Others" />
+            </FormControl>
+          </Grid>
+            <Grid item lg={4} md={6} sm={8} xs={12}>
+              <Button variant='contained'>
+                Submit
               </Button>
             </Grid>
           </Grid>
         
       </Grid>
+      </Grid>
     </div>
    )
  }
+
 
 
 function SimpleDialog(props) {
@@ -189,89 +163,10 @@ SimpleDialog.propTypes = {
   selectedValue: PropTypes.string.isRequired,
 };
 
- function AddEventPage3(){
-
-  const [open, setOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = (value) => {
-    setOpen(false);
-    setSelectedValue(value);
-  };
-  function prevPage() {
-    setPage(page=>2);
-  }
-  const fileTypes = ["JPG", "PNG", "GIF","PDF"];
-  const [file, setFile] = useState(null);
-  const handleChange = (file) => {
-    setFile(file);
-  };
-
   return(
-    <div className='AddEvent'>
-      <Typography variant="h4" sx={{ textAlign: 'center' }}>Last step to publish event</Typography>
-      <Typography sx={{ textAlign: 'center' }}>Admin only infomation</Typography>
-      <Grid container>
-        <Grid item lg={6} md={6} sm={12} xs={12}>
-          <Grid item className='GridItems'>
-          <TextField fullWidth label="Organizers" placeholder="Ganesh murty" InputLabelProps={{shrink: true,}} variant='standard'></TextField>
-          </Grid>
-          <Grid item className='GridItems'>
-          <TextField fullWidth label="Additional Information" placeholder="Certificates will be provided to the attendees" InputLabelProps={{shrink: true,}} multiline rows={3}></TextField>
-          </Grid>
-          </Grid>
-          <Grid item lg={6} md={6} sm={12} xs={12} >
-          <Typography className="fileuploadgriditem" >Add admin files</Typography>
-            <FileUploader
-              multiple={true}
-              handleChange={handleChange}
-              name="file"
-              types={fileTypes}
-            />
-            <p>{file ? `File name: ${file.name}` : "No files uploaded yet"}</p>
-          </Grid>
-          
-          <Grid container lg={6} md={6} sm={12} xs={12} direction='row' className='Buttons'>
-          <Grid item className='Grid Items' lg={12} md={12} sm={12} xs={12}>
-            <FormControl>
-            <FormLabel id="demo-radio-buttons-group-label">Who Can Attend</FormLabel>
-
-                <FormControlLabel value="faculty" control={<Checkbox />} label="Terna Faculty" />
-                <FormControlLabel value="students" control={<Checkbox />} label="Terna Students" />
-                <FormControlLabel value="others" control={<Checkbox />} label="Others" />
-            </FormControl>
-          </Grid>
-            <Grid item >
-              <Button variant='contained' color='error' onClick={prevPage}>
-              Back
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button variant='contained' onClick={handleClickOpen}>
-                Submit
-              </Button>
-              <SimpleDialog
-                selectedValue={selectedValue}
-                open={open}
-                onClose={handleClose}
-              />
-            </Grid>
-          </Grid>
-        
-      </Grid>
-    </div>
-   )
- }
-return(
   <>
   {page === 0 && <EventPage></EventPage>}
   {page === 1 && <AddEventPage1></AddEventPage1>}
-  {page === 2 && <AddEventPage2></AddEventPage2>}
-  {page === 3 && <AddEventPage3></AddEventPage3>}
 
   </>
 );

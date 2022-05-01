@@ -6,8 +6,8 @@ import './SideBar.css';
 import { makeStyles } from "@mui/styles";
 import {minWidth } from '@mui/system';
 import { Navigate, NavLink } from 'react-router-dom';
-import logo from '../../asset/logo.png'
-import mayur from '../../asset/profile.png'
+import logo from '../../assets/logo.png'
+import mayur from '../../assets/profile.png'
 
 const drawerWidth = '240px';
 
@@ -61,7 +61,7 @@ function ResponsiveDrawer(props) {
           </NavLink>
 
           
-          <NavLink to="/event" className='Navlink' style={{ textDecoration: 'none' }}>
+          <NavLink to="/newevent" className='Navlink' style={{ textDecoration: 'none' }}>
           <ListItem  disablePadding>
             <ListItemButton>
               <ListItemIcon  >
@@ -72,24 +72,24 @@ function ResponsiveDrawer(props) {
           </ListItem>
           </NavLink>
 
-          <NavLink to="/" className='Navlink' style={{ textDecoration: 'none' }}>
+          <NavLink to="/event" className='Navlink' style={{ textDecoration: 'none' }}>
           <ListItem  disablePadding>
             <ListItemButton>
               <ListItemIcon  >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M17 3h4a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h4V1h2v2h6V1h2v2zm3 6V5h-3v2h-2V5H9v2H7V5H4v4h16zm0 2H4v8h16v-8zM6 13h5v4H6v-4z"/></svg>
               </ListItemIcon>
-              <ListItemText  ><Typography >Notifications</Typography></ListItemText>
+              <ListItemText  ><Typography >Event Page(Temp)</Typography></ListItemText>
             </ListItemButton>
           </ListItem>
           </NavLink>
 
-          <NavLink to="/" className='Navlink' style={{ textDecoration: 'none' }}>
+          <NavLink to="/signin" className='Navlink' style={{ textDecoration: 'none' }}>
           <ListItem  disablePadding>
             <ListItemButton>
               <ListItemIcon  >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M10 3h4a8 8 0 1 1 0 16v3.5c-5-2-12-5-12-11.5a8 8 0 0 1 8-8zm2 14h2a6 6 0 1 0 0-12h-4a6 6 0 0 0-6 6c0 3.61 2.462 5.966 8 8.48V17z"/></svg>
               </ListItemIcon>
-              <ListItemText  ><Typography >Messages</Typography></ListItemText>
+              <ListItemText  ><Typography >SignIn(Temp)</Typography></ListItemText>
             </ListItemButton>
           </ListItem>
           </NavLink>
@@ -121,7 +121,7 @@ function ResponsiveDrawer(props) {
                 </div>
                 <div className={classes.profile}>
                 <Avatar style={{marginRight: 6}} alt="profile-photo" src={mayur} />
-                <Typography className={classes.username} color="#000000"  >Hi <br/> Mayur Argade</Typography>
+                <Typography className={classes.username} color="#000000"  >Welcome <br/> Mayur Argade</Typography>
                 </div>
             </div>
         

@@ -1,7 +1,9 @@
 .EventPage{
     border-radius: 25px;
+    
     background-color: white;
-    height: fit-content;
+    height:100vh;
+    margin-top: 280px;
     margin-right: 15px;
     margin-left: 15px;
     margin-bottom: 15px;
@@ -45,12 +47,4 @@
 .TimePickers{
     padding-right: 20px;
     justify-content: space-between;
-}
-
-.fileuploadgriditem{
- padding-top: 5rem;
-}
-
-.fileuploader{
-    height: 10rem;
 }

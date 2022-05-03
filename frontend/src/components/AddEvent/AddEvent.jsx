@@ -7,41 +7,14 @@ import DropFileInput from '../drop-file-input/DropFileInput';
 
 
 const AddEvent = () => {
-  const [page, setPage]=useState(0);
 
- function EventPage() {
-   function nextPage() {
-     setPage(()=>1);
-   }
-  return (
-    <div className='EventPage' >
-      <div className='text-4xl py-3'>No Ongoing Events</div>
-      <div className='text-lg'>No Events are currently active.</div>
-      <p className='mb-3'>Start a new Event now!</p>
-      <Button variant='contained' onClick={nextPage}>
-      Create Event
-    </Button>
-    </div>
-    
-)
- }
- function AddEventPage1(){
-  function prevPage() {
-    setPage(page=>0);
-  }
-  function nextPage() {
-    setPage(page=>2);
-  }
-
-  
-  const fileTypes = ["JPG", "PNG", "GIF","PDF"];
+   const fileTypes = ["JPG", "PNG", "GIF","PDF"];
   const [file, setFile] = useState(null);
   const handleChange = (file) => {
     setFile(file);
   };
-  return(
+  return (
     <div className='AddEvent'>
-      <h1>Add New Event</h1>
       <Grid container>
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <Grid item className='GridItems'>
@@ -137,39 +110,8 @@ const AddEvent = () => {
       </Grid>
       </Grid>
     </div>
-   )
+    
+)
  }
-
-
-
-function SimpleDialog(props) {
-  const { onClose, selectedValue, open } = props;
-
-  const handleClose = () => {
-    onClose(selectedValue);
-  };
-
-
-  return (
-    <Dialog onClose={handleClose} open={open}>
-      <DialogTitle>Submitted</DialogTitle>
-    </Dialog>
-  );
-}
-
-SimpleDialog.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
-  selectedValue: PropTypes.string.isRequired,
-};
-
-  return(
-  <>
-  {page === 0 && <EventPage></EventPage>}
-  {page === 1 && <AddEventPage1></AddEventPage1>}
-
-  </>
-);
-}
 
 export default AddEvent

@@ -12,6 +12,7 @@ const CreateEvent = () => {
       </Grid>
       <Grid item paddingLeft={{xs:'0px',sm:'240px', md:'240px', lg:'240px'}} lg={12} md={12} sm={12} xs={12}>
         <Container >
+        <p className='text-2xl pl-8'>Add Event Information</p>
           <AddEvent></AddEvent>
         </Container>
       </Grid>

@@ -4,6 +4,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import { person } from "./assets/1.jpg"
 
 import Homepage from './Pages/Homepage/Homepage'
 import Login from './Pages/login/SignIn'
@@ -21,7 +22,7 @@ function App() {
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Signup />} />
       <Route path='/newevent' element={<CreateEvent />} />
-      <Route path='/event' element={<Event />} />
+      <Route path='/event/:id' element={<Event />} />
       </Routes>
     </Router>
     </>

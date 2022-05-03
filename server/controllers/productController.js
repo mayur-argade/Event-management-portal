@@ -4,9 +4,10 @@ const CustomError = require('../utils/customErrors')
 const cloudinary = require('cloudinary')
 
 
-exports.addProduct = BigPromise(async (req, res, next) => {
+exports.addProduct = async (req, res, next) => {
     // images
-  
+  try {
+    
     let imageArray = [];
   
     if (!req.files) {
@@ -38,16 +39,16 @@ exports.addProduct = BigPromise(async (req, res, next) => {
       success: true,
       product,
     });
-  });
+  } catch (error) {
+    console.log(error);
+  }
+  };
 
 exports.getAllProducts = BigPromise(async(req, res, next) => {
 
     const products = await Product.find({})
 
-    res.status(200).json({
-        success: true,
-        products,
-    })
+    res.status(200).json(products)
 })
 
 exports.getOneProduct = BigPromise(async (req, res, next) => {

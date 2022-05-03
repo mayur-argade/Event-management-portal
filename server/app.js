@@ -4,7 +4,7 @@ const app = express();
 const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
 const fileupload = require('express-fileupload')
-
+const cors = require('cors')
 
 // ------------------------------------------------------------------------------------------------------------
 // temp check 
@@ -32,7 +32,8 @@ app.use(morgan('tiny'))
 
 
 // ------------------------------------------------------------------------------------------------------------
-
+app.use(cors());
+// ----------------------------------
 // import all the routes here
 const home = require('./routes/home')
 const user = require('./routes/user')

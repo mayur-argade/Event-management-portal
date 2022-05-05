@@ -32,18 +32,16 @@ const productSchema = new mongoose.Schema({
   //   }  
   // },
 
-  photos: [
-    {
-      id: {
+  photo:{
+    id: {
         type: String,
         // required: true,
-      },
-      secure_url: {
-        type: String,
-        // required: true,
-      },
     },
-  ],
+    secure_url: {
+        type: String,
+        // required: true,
+    }  
+},
 
   speaker: {
     type: String,
@@ -79,7 +77,7 @@ const productSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.ObjectId,
     ref: "User",
-    required: true,
+    // required: true,
   },
 
   createdAt: {

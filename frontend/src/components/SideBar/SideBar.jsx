@@ -1,13 +1,15 @@
 import * as React from 'react';
+import {useContext} from 'react'
 import {AppBar, Toolbar, InputBase, Avatar, IconButton, Drawer, CssBaseline, Box, Typography, List, ListItem, ListItemText, ListItemButton, ListItemIcon, Grid  } from '@mui/material'
 import PropTypes from 'prop-types';
 import MenuIcon from '@mui/icons-material/Menu';
 import './SideBar.css';
 import { makeStyles } from "@mui/styles";
 import {minWidth } from '@mui/system';
-import { Navigate, NavLink } from 'react-router-dom';
+import { Navigate, NavLink, Link } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import mayur from '../../assets/profile.png'
+import { Context } from '../../context/Context';
 
 const drawerWidth = '240px';
 
@@ -34,7 +36,8 @@ profile:{
 },
 }));
 
-function ResponsiveDrawer(props) {
+function ResponsiveDrawer(props)
+ {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const classes = useStyles({});
@@ -61,7 +64,7 @@ function ResponsiveDrawer(props) {
           </NavLink>
 
           
-          <NavLink to="/newevent" className='Navlink' style={{ textDecoration: 'none' }}>
+          <Link to={{ pathname: "http://localhost:4000/signuptest" }} target="_blank"  style={{ textDecoration: 'none' }}>
           <ListItem  disablePadding>
             <ListItemButton>
               <ListItemIcon  >
@@ -70,7 +73,7 @@ function ResponsiveDrawer(props) {
               <ListItemText  ><Typography >Add Event</Typography></ListItemText>
             </ListItemButton>
           </ListItem>
-          </NavLink>
+          </Link>
 
           <NavLink to="/event" className='Navlink' style={{ textDecoration: 'none' }}>
           <ListItem  disablePadding>
@@ -97,10 +100,12 @@ function ResponsiveDrawer(props) {
           </List>
   </div>
   </>
-   
+ 
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
+  const {user } = useContext(Context);
+  console.log(user);
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -121,7 +126,7 @@ function ResponsiveDrawer(props) {
                 </div>
                 <div className={classes.profile}>
                 <Avatar style={{marginRight: 6}} alt="profile-photo" src={mayur} />
-                <Typography className={classes.username} color="#000000"  >Welcome <br/> Mayur Argade</Typography>
+                <Typography className={classes.username} color="#000000"  >Welcome <br/>{user.user.name}</Typography>
                 </div>
             </div>
         

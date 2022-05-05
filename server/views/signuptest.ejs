@@ -11,18 +11,22 @@
 <body class="bg-dark text-white">
     <div class="container mt-4 col-4 col-offset-6">
         <h1 class="display-3">Post FORM</h1>
-        <form method="post" action="/api/v1/signup" enctype="multipart/form-data">
+        <form method="post" action="/api/v1/admin/products/add" enctype="multipart/form-data">
             <div class="mb-3">
-              <label for="first" class="form-label">Name</label>
-              <input type="text" name="name" class="form-control" id="firstname" aria-describedby="emailHelp">
+              <label for="title" class="form-label">title</label>
+              <input type="text" name="title" class="form-control" id="title" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" name="email" class="form-control" id="firstname" aria-describedby="emailHelp">
+              <label for="description" class="form-label">description</label>
+              <input type="text" name="description" class="form-control" id="description" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
-              <label for="password" class="form-label">password</label>
-              <input type="password" name="password" class="form-control" id="firstname" aria-describedby="emailHelp">
+              <label for="purpose" class="form-label">purpose</label>
+              <input type="text" name="purpose" class="form-control" id="purpose" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="organizers" class="form-label">organizers</label>
+              <input type="text" name="organizers" class="form-control" id="organizers" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
               <label for="photo" class="form-label">photo</label>

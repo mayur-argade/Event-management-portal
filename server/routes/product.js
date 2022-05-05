@@ -11,6 +11,6 @@ router.route('/allproducts').get(getAllProducts)
 router.route('/products/:id').get(getOneProduct)
 
 // admin routes
-router.route('/admin/product/add').post(isLoggedIn, customRole('admin'), addProduct)
+router.route('/admin/products/add').post(addProduct)
 
 module.exports = router;

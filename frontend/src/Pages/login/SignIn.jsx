@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useRef, useContext }  from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,6 +12,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {Context} from '../../context/Context'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -29,14 +32,30 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+  const navigate = useNavigate();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const {user, dispatch, isFetching } = useContext(Context);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch({ type: "LOGIN_START" });
+    try {
+      const res = await axios.post("http://localhost:4000/api/v1/login", {
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+      });
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+    } catch (err) {
+      dispatch({ type: "LOGIN_FAILURE" });
+    }
   };
+
+  if(user){
+    
+    navigate('/');
+  }
+  
 
   return (
       <div style={{height:'100vh'}}>
@@ -59,29 +78,33 @@ export default function SignIn() {
             </Typography>
             <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                 <TextField
-                margin="normal"
                 required
                 fullWidth
                 id="email"
                 label="Email Address"
                 name="email"
                 autoComplete="email"
-                autoFocus
+                inputRef={emailRef}
                 />
+
                 <TextField
-                margin="normal"
                 required
                 fullWidth
+                paddingTop={2}
                 name="password"
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="current-password"
+                autoComplete="new-password"
+                inputRef={passwordRef}
                 />
+
                 <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
+                
                 />
+
                 <Button
                 type="submit"
                 fullWidth
@@ -90,6 +113,7 @@ export default function SignIn() {
                 >
                 Sign In
                 </Button>
+
                 <Grid container>
                 <Grid item xs>
                     <Link href="#" variant="body2">

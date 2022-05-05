@@ -1,9 +1,25 @@
-import React from "react";
+import {useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import internet from '../../assets/1.png'
+import axios from 'axios'
 
 const Event  = ({post}) => {
+
+  const [event, setEvent] = useState({})
+  useEffect(() => {
+      
+    const fetchpost = async () => {
+        const res = await axios.get(`http://localhost:4000/api/v1/products/${post._id}`)
+        console.log(res.data);
+    }
+    fetchpost()
+}, [])
+
   return (
+    
     <div>
+      <Link to={`event/${post._id}`}>
+      <div>
       <div class="max-w-md mt-5 mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-3xl transition duration-500 ease-in-out transform hover:translate-y-5 hover:shadow-2xl">
         <div class="md:flex">
           <div class="md:shrink-0">
@@ -30,7 +46,11 @@ const Event  = ({post}) => {
         </div>
       </div>
     </div>
-  );
+
+      </Link>
+    </div>
+
+    );
 };
 
 export default Event;

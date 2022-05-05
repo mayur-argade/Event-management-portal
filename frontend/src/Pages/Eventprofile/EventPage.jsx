@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ResponsiveDrawer from "../../components/SideBar/SideBar";
 import DropFileInput from "../../components/drop-file-input/DropFileInput";
 import {
@@ -14,36 +14,63 @@ import {
 } from "@mui/material";
 import "./eventpage.css";
 import AddEvent from "../../components/AddEvent/AddEvent";
+import { useParams } from "react-router";
+import axios from "axios";
+
 
 const EventPage = () => {
   const [About, setAbout] = useState(true);
   const [Gallery, setGallery] = useState(false);
   const [Admin, setAdmin] = useState(false);
 
-  function AboutPage() {
-    return (
-      <>
-        <Grid container>
-          <Grid item sm={12} lg={6}>
-            <p className="text-2xl pt-4">Event Title Here</p>
-            <p className="text-xl pt-4">Event Description Here:8</p>
-            <p className="text-xl pt-4">Start Time:</p>
-            <p className="text-xl pt-4">End Time:</p>
-            <p className="text-xl pt-4">Speaker:</p>
-            <p className="text-xl pt-4">Purpose of the Event:</p>
-            <p className="text-xl pt-4">Topics to be covered:</p>
-            <p className="text-xl pt-4">Organized by:</p>
-            <p className="text-xl pt-4">Topics:</p>
-            <p className="text-xl pt-4">For:</p>
+  const [event, setEvent] = useState({})
+  const userId = useParams().id;
 
-          </Grid>
-          <Grid item sm={12} lg={6} className='sm:pt-6 lg:pt-0'>
-            Attachments
+  useEffect(() => {
+    const fetchPost = async () => {
+      const res = await axios.get(`/products/${userId}`);
+      setEvent(res.data)
+    };
+    fetchPost();
+  }, [userId]);
+    console.log(event.title);
+    
+    function AboutPage() {
+      return (
+        <>
+          <Grid container>
+            <Grid item sm={12} lg={9} className='pr-20'>
+  
+              <div>
+                <p className="text-lg text-bold pt-6">Description:</p>
+                <p className="text-md">{event.description}</p>
+              </div>
+  
+              <div>
+                <p className="text-lg text-bold pt-6">Purpose of the Event:</p>
+                <p className="text-md">{event.purpose}</p>
+              </div>
+  
+              <div>
+                <p className="text-lg text-bold pt-6">Topics:</p>
+                <p className="text-md">{event.topics}</p>
+              </div>
+  
+              <div>
+                <p className="text-lg text-bold pt-6">Who Can Attend:</p>
+                <p className="text-md">{event.attendees}</p>
+              </div>
+  
             </Grid>
-        </Grid>
-      </>
-    );
-  }
+            <Grid item sm={12} lg={3} className='sm:pt-6 lg:pt-0 pr-20'>
+              <p className="text-lg text-bold pt-6">Speaker:{event.speaker}</p>
+              <p className="text-lg text-bold pt-6">Organizers:{event.organizers}</p>
+              <p className="text-lg text-bold pt-6">Mode: online</p>
+              </Grid>
+          </Grid>
+        </>
+      );
+    }
 
   function GalleryPage() {
     return (
@@ -144,10 +171,9 @@ const EventPage = () => {
         <div className="xs:ml-0 sm:ml-72 mx-5">
           <div className="container mt-10 p-5 justify-between mx-auto flex flex-wrap flex-col md:flex-row md:justify-around bg-blue-600 rounded-lg ">
             <div class="align-middle p-3 text-left">
-              <p className="text-xl text-white pb-4">Event Title</p>
+              <p className="text-xl text-white pb-4">{event.title}</p>
               <p className="text-xl text-white">Organized By: CSI Terna</p>
-              <p className="text-xl text-white">30 February 2022</p>
-              <p className="text-xl text-white">24:01 am</p>
+              <p className="text-xl text-white">{event.startDate}</p>
             </div>
             <div className="">
               <img

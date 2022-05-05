@@ -8,37 +8,30 @@ exports.addProduct = async (req, res, next) => {
     // images
   try {
     
-    let imageArray = [];
-  
-    if (!req.files) {
-      return next(new CustomError("images are required", 401));
+    let result ;
+    if(req.files){
+        let file = req.files.photo
+        result = await cloudinary.v2.uploader.upload(file.tempFilePath, {
+            folder: "users",
+            width: 150,
+            crop: "scale"
+        })
     }
-  
-    if (req.files) {
-      for (let index = 0; index < req.files.photos.length; index++) {
-        let result = await cloudinary.v2.uploader.upload(
-          req.files.photos[index].tempFilePath,
-          {
-            folder: "products",
-          }
-        );
-  
-        imageArray.push({
-          id: result.public_id,
-          secure_url: result.secure_url,
-        });
-      }
-    }
-  
-    req.body.photos = imageArray;
-    req.body.user = req.user.id;
-  
-    const product = await Product.create(req.body);
-  
-    res.status(200).json({
-      success: true,
-      product,
-    });
+
+    const {title, description, purpose, organizers} = req.body
+
+   
+    const product = await Product.create({
+       title,
+       description, 
+       purpose, 
+       organizers,
+        photo:{
+            id: result.public_id,
+            secure_url: result.secure_url,
+        }
+    })
+    res.status(200).json(product)
   } catch (error) {
     console.log(error);
   }
@@ -57,9 +50,6 @@ exports.getOneProduct = BigPromise(async (req, res, next) => {
     if (!product) {
       return next(new CustomError("No product found with this id", 401));
     }
-    res.status(200).json({
-      success: true,
-      product,
-    });
+    res.status(200).json(product);
   });
   

@@ -12,13 +12,11 @@ exports.addProduct = async (req, res, next) => {
     if(req.files){
         let file = req.files.photo
         result = await cloudinary.v2.uploader.upload(file.tempFilePath, {
-            folder: "users",
-            width: 150,
-            crop: "scale"
+            folder: "products",
         })
     }
 
-    const {title, description, purpose, organizers} = req.body
+    const {title, description, purpose, organizers, topics, speaker, } = req.body
 
    
     const product = await Product.create({
@@ -26,6 +24,8 @@ exports.addProduct = async (req, res, next) => {
        description, 
        purpose, 
        organizers,
+       speaker,
+       topics,
         photo:{
             id: result.public_id,
             secure_url: result.secure_url,

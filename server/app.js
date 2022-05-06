@@ -10,12 +10,6 @@ const cors = require('cors')
 // temp check 
 app.set("view engine", "ejs")
 
-// swagger related
-const swaggerUi = require('swagger-ui-express');
-const YAML = require('yamljs');
-const swaggerDocument = YAML.load('./swagger.yaml');
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
 // regular middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended: true})) 

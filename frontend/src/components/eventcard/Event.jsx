@@ -24,8 +24,8 @@ const Event  = ({post}) => {
         <div class="md:flex">
           <div class="md:shrink-0">
             <img
-              class="h-48 w-full object-fill md:h-full md:w-80"
-              src={internet}
+              class="h-48 w-full object-fill  md:w-80"
+              src={post.photo.secure_url}
               alt="Man looking at item at a store"
             />
           </div>

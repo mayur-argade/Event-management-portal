@@ -17,7 +17,7 @@ const Error = () => {
         </Grid>
 
         <Grid item>
-            <Link to="/explore" style={{ textDecoration: "none" }}>
+            <Link to="/" style={{ textDecoration: "none" }}>
             <Button variant="contained" color="secondary" style={{marginTop: 10}}>Back to Homepage</Button>
             </Link>
         </Grid>

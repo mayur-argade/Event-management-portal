@@ -20,7 +20,7 @@ import axios from "axios";
 
 const EventPage = () => {
   const [About, setAbout] = useState(true);
-  const [Gallery, setGallery] = useState(false);
+  
   const [Admin, setAdmin] = useState(false);
 
   const [event, setEvent] = useState({})
@@ -33,8 +33,7 @@ const EventPage = () => {
     };
     fetchPost();
   }, [userId]);
-    console.log(event.title);
-    
+
     function AboutPage() {
       return (
         <>
@@ -72,75 +71,8 @@ const EventPage = () => {
       );
     }
 
-  function GalleryPage() {
-    return (
-      <>
-        <div>
-          <section class="overflow-hidden text-gray-700 ">
-            <div class="container px-5 py-2 mx-auto lg:pt-12 lg:px-32">
-              <div class="flex flex-wrap -m-1 md:-m-2">
-                <div class="flex flex-wrap w-1/3">
-                  <div class="w-full p-1 md:p-2">
-                    <img
-                      alt="gallery"
-                      class="block object-cover object-center w-full h-full rounded-lg"
-                      src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
-                    ></img>
-                  </div>
-                </div>
-                <div class="flex flex-wrap w-1/3">
-                  <div class="w-full p-1 md:p-2">
-                    <img
-                      alt="gallery"
-                      class="block object-cover object-center w-full h-full rounded-lg"
-                      src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(74).webp"
-                    ></img>
-                  </div>
-                </div>
-                <div class="flex flex-wrap w-1/3">
-                  <div class="w-full p-1 md:p-2">
-                    <img
-                      alt="gallery"
-                      class="block object-cover object-center w-full h-full rounded-lg"
-                      src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(75).webp"
-                    ></img>
-                  </div>
-                </div>
-                <div class="flex flex-wrap w-1/3">
-                  <div class="w-full p-1 md:p-2">
-                    <img
-                      alt="gallery"
-                      class="block object-cover object-center w-full h-full rounded-lg"
-                      src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(70).webp"
-                    ></img>
-                  </div>
-                </div>
-                <div class="flex flex-wrap w-1/3">
-                  <div class="w-full p-1 md:p-2">
-                    <img
-                      alt="gallery"
-                      class="block object-cover object-center w-full h-full rounded-lg"
-                      src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(76).webp"
-                    ></img>
-                  </div>
-                </div>
-                <div class="flex flex-wrap w-1/3">
-                  <div class="w-full p-1 md:p-2">
-                    <img
-                      alt="gallery"
-                      class="block object-cover object-center w-full h-full rounded-lg"
-                      src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(72).webp"
-                    ></img>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </>
-    );
-  }
-
+  
+  
   function AdminPage() {
     /*
           // You will have to fetch the current data for this page. 
@@ -170,61 +102,43 @@ const EventPage = () => {
       <Grid item lg={12} style={{ height: "100vmax" }}>
         <div className="xs:ml-0 sm:ml-72 mx-5">
           <div className="container mt-10 p-5 justify-between mx-auto flex flex-wrap flex-col md:flex-row md:justify-around bg-blue-600 rounded-lg ">
-            <div class="align-middle p-3 text-left">
-              <p className="text-xl text-white pb-4">{event.title}</p>
+            <div class="align-middle p-3 text-center">
+              <p className="text-2xl text-white pb-4">{event.title}</p>
               <p className="text-xl text-white">Organized By: CSI Terna</p>
               <p className="text-xl text-white">{event.startDate}</p>
             </div>
-            <div className="">
-              <img
-                class="object-cover h-40 object-center rounded"
-                alt="hero"
-                src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(75).webp"
-              />
-            </div>
+            
           </div>
         </div>
 
         <div className="grid grid-cols-12 gap-5 py-5 xs:ml-0 sm:ml-72">
-          <div className="lg:col-start-1 lg:col-end- col-start-1 col-end-13">
-            <div class="tabs tabs-boxed bg-slate-200">
+          <div className="lg:col-start-1 align-middle lg:col-end- col-start-1 col-end-13">
+            <div class="tabs rounded-lg tabs-boxed h-7 bg-slate-200">
               <a
                 className={`${
                   About
-                    ? "bg-blue-500 rounded-box tab mx-5 text-black"
+                    ? " underline tab mx-5 text-black"
                     : "tab mx-5 text-black"
                 }`}
                 onClick={() => {
                   setAbout(true);
-                  setGallery(false);
+                   
                   setAdmin(false);
                 }}
               >
                 About
               </a>
-              <a
-                className={`${
-                  Gallery
-                    ? "bg-blue-500 rounded-box tab mx-5 text-black"
-                    : "tab mx-5 text-black"
-                }`}
-                onClick={() => {
-                  setAbout(false);
-                  setGallery(true);
-                  setAdmin(false);
-                }}
-              >
-                Gallery
-              </a>
+               
+               
               <a
                 className={`${
                   Admin
-                    ? "bg-blue-500 rounded-box tab mx-5 text-black"
+                    ? "underline tab mx-5 text-black"
                     : "tab mx-5 text-black"
                 }`}
                 onClick={() => {
                   setAbout(false);
-                  setGallery(false);
+                 
                   setAdmin(true);
                 }}
               >
@@ -233,7 +147,7 @@ const EventPage = () => {
             </div>
             <div className="m-10">
               {About === true && <AboutPage></AboutPage>}
-              {Gallery === true && <GalleryPage></GalleryPage>}
+               
               {Admin === true && <AdminPage></AdminPage>}
             </div>
           </div>

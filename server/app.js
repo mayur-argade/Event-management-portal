@@ -13,7 +13,10 @@ app.use((req, res, next) => {
     res.setHeader("Content-Security-Policy", "default-src 'none'; font-src 'self' https://fonts.gstatic.com");
     next();
   });
-
+  app.use((req, res, next) => {
+    res.setHeader("Cross-Origin-Resource-Policy", "same-site");
+    next();
+  });
 // temp check 
 app.set("view engine", "ejs")
 

@@ -7,7 +7,13 @@ const fileupload = require('express-fileupload')
 const cors = require('cors')
 const helmet = require('helmet')
 
-// ------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------
+
+app.use((req, res, next) => {
+    res.setHeader("Content-Security-Policy", "default-src 'none'; font-src 'self' https://fonts.gstatic.com");
+    next();
+  });
+
 // temp check 
 app.set("view engine", "ejs")
 

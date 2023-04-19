@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
 const fileupload = require('express-fileupload')
 const cors = require('cors')
+const helmet = require('helmet')
 
 // ------------------------------------------------------------------------------------------------------------
 // temp check 
@@ -24,7 +25,19 @@ app.use(fileupload({
 // morgan middleware
 app.use(morgan('tiny'))
 
-
+app.use(helmet());
+app.use(
+    helmet.contentSecurityPolicy({
+      directives: {
+        "default-src": ["'self'"],
+        "connect-src": ["'self'", "'unsafe-inline'"],
+        "img-src": ["'self'", "data:"],
+        "style-src-elem": ["'self'", "data:"],
+        "script-src": ["'unsafe-inline'", "'self'"],
+        "object-src": ["'none'"],
+      },
+    })
+  );
 // ------------------------------------------------------------------------------------------------------------
 app.use(cors());
 // ----------------------------------

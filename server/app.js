@@ -5,8 +5,18 @@ const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
 const fileupload = require('express-fileupload')
 const cors = require('cors')
+const helmet = require('helmet')
 
-// ------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------
+
+app.use((req, res, next) => {
+    res.setHeader("Content-Security-Policy", "default-src 'none'; font-src 'self' https://fonts.gstatic.com");
+    next();
+  });
+  app.use((req, res, next) => {
+    res.setHeader("Cross-Origin-Resource-Policy", "same-site");
+    next();
+  });
 // temp check 
 app.set("view engine", "ejs")
 
@@ -24,7 +34,19 @@ app.use(fileupload({
 // morgan middleware
 app.use(morgan('tiny'))
 
-
+app.use(helmet());
+app.use(
+    helmet.contentSecurityPolicy({
+      directives: {
+        "default-src": ["'self'"],
+        "connect-src": ["'self'", "'unsafe-inline'"],
+        "img-src": ["'self'", "data:"],
+        "style-src-elem": ["'self'", "data:"],
+        "script-src": ["'unsafe-inline'", "'self'"],
+        "object-src": ["'none'"],
+      },
+    })
+  );
 // ------------------------------------------------------------------------------------------------------------
 app.use(cors());
 // ----------------------------------
